@@ -9,7 +9,6 @@ const srcDir = resolve(rootDir, "src");
 const distDir = resolve(rootDir, "dist");
 const tempDir = resolve(rootDir, ".tmp-html-heads");
 const bundledRegistry = resolve(tempDir, "pageRegistry.mjs");
-const routesToPrerender = ["/", "/ikrafttradandedatum"];
 
 function escapeHtml(value) {
   return String(value)
@@ -104,18 +103,18 @@ await build({
   logLevel: "silent",
 });
 
-const { getPage } = await import(pathToFileURL(bundledRegistry).href);
+const { PAGE_REGISTRY } = await import(pathToFileURL(bundledRegistry).href);
+const pagesToPrerender = PAGE_REGISTRY.filter(
+  (page) => page.sitemap && page.prerenderReady && !page.dynamic,
+);
 const baseHtml = await readFile(resolve(distDir, "index.html"), "utf8");
 
-for (const path of routesToPrerender) {
-  const page = getPage(path);
-  if (!page) throw new Error(`No page registry entry found for ${path}`);
-
-  const outputPath = routeOutputPath(path);
+for (const page of pagesToPrerender) {
+  const outputPath = routeOutputPath(page.path);
   await mkdir(dirname(outputPath), { recursive: true });
   await writeFile(outputPath, applySeoHead(baseHtml, page), "utf8");
 }
 
 await rm(tempDir, { recursive: true, force: true });
 
-console.log(`Generated metadata HTML for ${routesToPrerender.length} routes.`);
+console.log(`Generated metadata HTML for ${pagesToPrerender.length} routes.`);

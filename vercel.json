@@ -33,13 +33,13 @@
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/", "destination": "/index.html" },
     { "source": "/ikrafttradandedatum", "destination": "/ikrafttradandedatum/index.html" },
-    { "source": "/bedomning", "destination": "/index.html" },
-    { "source": "/branscher", "destination": "/index.html" },
+    { "source": "/bedomning", "destination": "/bedomning/index.html" },
+    { "source": "/branscher", "destination": "/branscher/index.html" },
     { "source": "/branscher/:slug", "destination": "/index.html" },
-    { "source": "/nis2-konsult", "destination": "/index.html" },
-    { "source": "/for-konsulter", "destination": "/index.html" },
-    { "source": "/kontakt", "destination": "/index.html" },
-    { "source": "/integritet", "destination": "/index.html" },
+    { "source": "/nis2-konsult", "destination": "/nis2-konsult/index.html" },
+    { "source": "/for-konsulter", "destination": "/for-konsulter/index.html" },
+    { "source": "/kontakt", "destination": "/kontakt/index.html" },
+    { "source": "/integritet", "destination": "/integritet/index.html" },
     { "source": "/stad/:slug", "destination": "/index.html" }
   ]
 }
