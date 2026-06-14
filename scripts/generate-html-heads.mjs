@@ -103,10 +103,13 @@ await build({
   logLevel: "silent",
 });
 
-const { PAGE_REGISTRY } = await import(pathToFileURL(bundledRegistry).href);
-const pagesToPrerender = PAGE_REGISTRY.filter(
-  (page) => page.sitemap && page.prerenderReady && !page.dynamic,
-);
+const { getSitemapPages } = await import(pathToFileURL(bundledRegistry).href);
+const seen = new Set();
+const pagesToPrerender = getSitemapPages().filter((page) => {
+  if (!page.sitemap || !page.prerenderReady || seen.has(page.path)) return false;
+  seen.add(page.path);
+  return true;
+});
 const baseHtml = await readFile(resolve(distDir, "index.html"), "utf8");
 
 for (const page of pagesToPrerender) {

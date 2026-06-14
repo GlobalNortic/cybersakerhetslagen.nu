@@ -35,7 +35,7 @@
     { "source": "/ikrafttradandedatum", "destination": "/ikrafttradandedatum/index.html" },
     { "source": "/bedomning", "destination": "/bedomning/index.html" },
     { "source": "/branscher", "destination": "/branscher/index.html" },
-    { "source": "/branscher/:slug", "destination": "/index.html" },
+    { "source": "/branscher/:slug", "destination": "/branscher/:slug/index.html" },
     { "source": "/nis2-konsult", "destination": "/nis2-konsult/index.html" },
     { "source": "/for-konsulter", "destination": "/for-konsulter/index.html" },
     { "source": "/kontakt", "destination": "/kontakt/index.html" },
