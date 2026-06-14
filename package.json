@@ -8,6 +8,7 @@
     "sitemap": "node scripts/generate-sitemap.mjs",
     "html:heads": "node scripts/generate-html-heads.mjs",
     "metadata:qa": "node scripts/qa-metadata.mjs",
+    "metadata:qa:live": "node scripts/qa-live-metadata.mjs",
     "build": "npm run sitemap && vite build && npm run html:heads",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
