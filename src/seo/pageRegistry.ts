@@ -35,6 +35,12 @@ export type PageEntry = {
 const OG_IMAGE = DEFAULT_OG_IMAGE; // https://cybersakerhetslagen.nu/og-default.png
 const ROBOTS_DEFAULT = "index,follow";
 const DEFAULT_LASTMOD = "2026-06-14";
+const SEO_INDUSTRY_NAMES: Record<string, string> = {
+  "ikt-tjanster": "IKT-tjänster",
+  finansmarknadsinfrastruktur: "Finansinfrastruktur",
+  kemikalier: "Kemikalier",
+  livsmedel: "Livsmedel",
+};
 
 function entry(p: Omit<PageEntry, "canonical" | "ogImage" | "twitterImage" | "twitterTitle" | "twitterDescription" | "robots" | "lastmod"> & Partial<Pick<PageEntry, "canonical" | "ogImage" | "twitterImage" | "twitterTitle" | "twitterDescription" | "robots" | "lastmod">>): PageEntry {
   return {
@@ -52,9 +58,9 @@ function entry(p: Omit<PageEntry, "canonical" | "ogImage" | "twitterImage" | "tw
 export const PAGE_REGISTRY: PageEntry[] = [
   entry({
     path: "/",
-    title: "Cybersäkerhetslagen & NIS2 för företag | Preliminär bedömning",
+    title: "Cybersäkerhetslagen & NIS2 | Preliminär bedömning",
     description:
-      "Få en vägledande indikation på om ditt företag kan omfattas av Cybersäkerhetslagen och NIS2. Gör en preliminär bedömning och få ett praktiskt arbetsunderlag.",
+      "Få en vägledande indikation på om ditt företag kan omfattas av Cybersäkerhetslagen och NIS2. Gör en preliminär bedömning och få arbetsunderlag.",
     h1: "Ta reda på om ditt företag kan omfattas av Cybersäkerhetslagen",
     ogTitle: "Cybersäkerhetslagen & NIS2 för företag",
     ogDescription:
@@ -124,7 +130,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   }),
   entry({
     path: "/kontakt",
-    title: "Kontakt | cybersakerhetslagen.nu",
+    title: "Kontakt för NIS2-bedömning | Cybersäkerhetslagen",
     description:
       "Kontakta cybersakerhetslagen.nu om preliminär NIS2-bedömning, vägledning kring Cybersäkerhetslagen eller partnerförfrågningar.",
     h1: "Kontakta cybersakerhetslagen.nu",
@@ -136,7 +142,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   }),
   entry({
     path: "/integritet",
-    title: "Integritetspolicy | cybersakerhetslagen.nu",
+    title: "Integritet och personuppgifter | Cybersäkerhetslagen",
     description:
       "Läs hur cybersakerhetslagen.nu hanterar personuppgifter när du använder bedömningen, skickar en förfrågan eller kontaktar oss.",
     h1: "Integritetspolicy",
@@ -173,13 +179,16 @@ export function getIndustryPage(slug: string): PageEntry | undefined {
   const industry = INDUSTRIES.find((i) => i.slug === slug);
   if (!industry) return undefined;
   const name = industry.name;
+  const seoName = SEO_INDUSTRY_NAMES[slug] ?? name;
+  const baseTitle = `${seoName} och NIS2 | Cybersäkerhetslagen`;
+  const expandedTitle = `${seoName} och NIS2 för företag | Cybersäkerhetslagen`;
   return entry({
     path: `/branscher/${slug}`,
-    title: `${name} och NIS2 | Cybersäkerhetslagen`,
-    description: `Få en vägledande översikt av hur ${name.toLowerCase()} kan beröras av Cybersäkerhetslagen och NIS2. Informationen är ett arbetsunderlag inför vidare granskning.`,
+    title: baseTitle.length < 45 ? expandedTitle : baseTitle,
+    description: `Se hur ${seoName.toLowerCase()} kan beröras av Cybersäkerhetslagen och NIS2. Få en vägledande översikt för företag inför vidare granskning.`,
     h1: `${name} och Cybersäkerhetslagen`,
-    ogTitle: `${name} och NIS2`,
-    ogDescription: `Se hur ${name} kan beröras av Cybersäkerhetslagen. Vägledande information, inte juridisk rådgivning.`,
+    ogTitle: `${seoName} och NIS2`,
+    ogDescription: `Se hur ${seoName} kan beröras av Cybersäkerhetslagen. Vägledande information, inte juridisk rådgivning.`,
     sitemap: true,
     prerenderReady: true,
   });
