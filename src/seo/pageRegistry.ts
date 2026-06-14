@@ -60,6 +60,18 @@ export const PAGE_REGISTRY: PageEntry[] = [
     prerenderReady: true,
   }),
   entry({
+    path: "/ikrafttradandedatum",
+    title: "När trädde cybersäkerhetslagen i kraft? | 15 januari 2026",
+    description:
+      "Cybersäkerhetslagen (2025:1506) trädde i kraft den 15 januari 2026. Se kort svar, källor och nästa steg för NIS2-bedömning.",
+    h1: "När trädde cybersäkerhetslagen i kraft?",
+    ogTitle: "Cybersäkerhetslagen trädde i kraft den 15 januari 2026",
+    ogDescription:
+      "Kort svar om ikraftträdandedatum för Cybersäkerhetslagen (2025:1506), med källor och praktiskt nästa steg.",
+    sitemap: true,
+    prerenderReady: true,
+  }),
+  entry({
     path: "/bedomning",
     title: "Preliminär NIS2-bedömning | Cybersäkerhetslagen",
     description:

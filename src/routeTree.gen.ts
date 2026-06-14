@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as Nis2KonsultRouteImport } from './routes/nis2-konsult'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IntegritetRouteImport } from './routes/integritet'
+import { Route as IkrafttradandedatumRouteImport } from './routes/ikrafttradandedatum'
 import { Route as ForKonsulterRouteImport } from './routes/for-konsulter'
 import { Route as BedomningRouteImport } from './routes/bedomning'
 import { Route as IndexRouteImport } from './routes/index'
@@ -32,6 +33,11 @@ const KontaktRoute = KontaktRouteImport.update({
 const IntegritetRoute = IntegritetRouteImport.update({
   id: '/integritet',
   path: '/integritet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IkrafttradandedatumRoute = IkrafttradandedatumRouteImport.update({
+  id: '/ikrafttradandedatum',
+  path: '/ikrafttradandedatum',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForKonsulterRoute = ForKonsulterRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bedomning': typeof BedomningRoute
   '/for-konsulter': typeof ForKonsulterRoute
+  '/ikrafttradandedatum': typeof IkrafttradandedatumRoute
   '/integritet': typeof IntegritetRoute
   '/kontakt': typeof KontaktRoute
   '/nis2-konsult': typeof Nis2KonsultRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bedomning': typeof BedomningRoute
   '/for-konsulter': typeof ForKonsulterRoute
+  '/ikrafttradandedatum': typeof IkrafttradandedatumRoute
   '/integritet': typeof IntegritetRoute
   '/kontakt': typeof KontaktRoute
   '/nis2-konsult': typeof Nis2KonsultRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/bedomning': typeof BedomningRoute
   '/for-konsulter': typeof ForKonsulterRoute
+  '/ikrafttradandedatum': typeof IkrafttradandedatumRoute
   '/integritet': typeof IntegritetRoute
   '/kontakt': typeof KontaktRoute
   '/nis2-konsult': typeof Nis2KonsultRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bedomning'
     | '/for-konsulter'
+    | '/ikrafttradandedatum'
     | '/integritet'
     | '/kontakt'
     | '/nis2-konsult'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bedomning'
     | '/for-konsulter'
+    | '/ikrafttradandedatum'
     | '/integritet'
     | '/kontakt'
     | '/nis2-konsult'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bedomning'
     | '/for-konsulter'
+    | '/ikrafttradandedatum'
     | '/integritet'
     | '/kontakt'
     | '/nis2-konsult'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BedomningRoute: typeof BedomningRoute
   ForKonsulterRoute: typeof ForKonsulterRoute
+  IkrafttradandedatumRoute: typeof IkrafttradandedatumRoute
   IntegritetRoute: typeof IntegritetRoute
   KontaktRoute: typeof KontaktRoute
   Nis2KonsultRoute: typeof Nis2KonsultRoute
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/integritet'
       fullPath: '/integritet'
       preLoaderRoute: typeof IntegritetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ikrafttradandedatum': {
+      id: '/ikrafttradandedatum'
+      path: '/ikrafttradandedatum'
+      fullPath: '/ikrafttradandedatum'
+      preLoaderRoute: typeof IkrafttradandedatumRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/for-konsulter': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BedomningRoute: BedomningRoute,
   ForKonsulterRoute: ForKonsulterRoute,
+  IkrafttradandedatumRoute: IkrafttradandedatumRoute,
   IntegritetRoute: IntegritetRoute,
   KontaktRoute: KontaktRoute,
   Nis2KonsultRoute: Nis2KonsultRoute,

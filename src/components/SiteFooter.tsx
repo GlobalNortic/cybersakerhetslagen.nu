@@ -30,6 +30,7 @@ export function SiteFooter() {
         <div>
           <div className="text-sm font-medium">Juridiskt</div>
           <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+            <li><Link to="/ikrafttradandedatum" className="hover:text-primary">Ikraftträdandedatum</Link></li>
             <li><Link to="/integritet" className="hover:text-primary">Integritetspolicy</Link></li>
           </ul>
         </div>

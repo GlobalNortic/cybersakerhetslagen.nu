@@ -1,11 +1,38 @@
 {
   "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/assets/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
   "redirects": [
+    { "source": "/datum", "destination": "/ikrafttradandedatum", "permanent": true },
+    { "source": "/datum/", "destination": "/ikrafttradandedatum", "permanent": true },
+    {
+      "source": "/ikrafttradandedatum/",
+      "destination": "/ikrafttradandedatum",
+      "permanent": true
+    },
+    { "source": "/bedomning/", "destination": "/bedomning", "permanent": true },
+    { "source": "/branscher/", "destination": "/branscher", "permanent": true },
+    { "source": "/branscher/:slug/", "destination": "/branscher/:slug", "permanent": true },
+    { "source": "/nis2-konsult/", "destination": "/nis2-konsult", "permanent": true },
+    { "source": "/for-konsulter/", "destination": "/for-konsulter", "permanent": true },
+    { "source": "/kontakt/", "destination": "/kontakt", "permanent": true },
+    { "source": "/integritet/", "destination": "/integritet", "permanent": true },
+    { "source": "/stad/:slug/", "destination": "/stad/:slug", "permanent": true },
     { "source": "/checklista", "destination": "/bedomning", "permanent": true }
   ],
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/", "destination": "/index.html" },
+    { "source": "/ikrafttradandedatum", "destination": "/index.html" },
     { "source": "/bedomning", "destination": "/index.html" },
     { "source": "/branscher", "destination": "/index.html" },
     { "source": "/branscher/:slug", "destination": "/index.html" },
