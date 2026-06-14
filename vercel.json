@@ -32,7 +32,7 @@
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/", "destination": "/index.html" },
-    { "source": "/ikrafttradandedatum", "destination": "/index.html" },
+    { "source": "/ikrafttradandedatum", "destination": "/ikrafttradandedatum/index.html" },
     { "source": "/bedomning", "destination": "/index.html" },
     { "source": "/branscher", "destination": "/index.html" },
     { "source": "/branscher/:slug", "destination": "/index.html" },
