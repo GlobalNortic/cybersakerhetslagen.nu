@@ -26,6 +26,7 @@ export type PageEntry = {
   twitterImage: string;
   robots: string;
   sitemap: boolean;
+  lastmod: string;
   prerenderReady: boolean;
   /** Markeras true för dynamiska mönster som /branscher/[slug]. */
   dynamic?: boolean;
@@ -33,8 +34,9 @@ export type PageEntry = {
 
 const OG_IMAGE = DEFAULT_OG_IMAGE; // https://cybersakerhetslagen.nu/og-default.png
 const ROBOTS_DEFAULT = "index,follow";
+const DEFAULT_LASTMOD = "2026-06-14";
 
-function entry(p: Omit<PageEntry, "canonical" | "ogImage" | "twitterImage" | "twitterTitle" | "twitterDescription" | "robots"> & Partial<Pick<PageEntry, "canonical" | "ogImage" | "twitterImage" | "twitterTitle" | "twitterDescription" | "robots">>): PageEntry {
+function entry(p: Omit<PageEntry, "canonical" | "ogImage" | "twitterImage" | "twitterTitle" | "twitterDescription" | "robots" | "lastmod"> & Partial<Pick<PageEntry, "canonical" | "ogImage" | "twitterImage" | "twitterTitle" | "twitterDescription" | "robots" | "lastmod">>): PageEntry {
   return {
     canonical: p.canonical ?? `${SITE_URL}${p.path === "/" ? "/" : p.path}`,
     ogImage: p.ogImage ?? OG_IMAGE,
@@ -42,6 +44,7 @@ function entry(p: Omit<PageEntry, "canonical" | "ogImage" | "twitterImage" | "tw
     twitterTitle: p.twitterTitle ?? p.ogTitle,
     twitterDescription: p.twitterDescription ?? p.ogDescription,
     robots: p.robots ?? ROBOTS_DEFAULT,
+    lastmod: p.lastmod ?? DEFAULT_LASTMOD,
     ...p,
   };
 }
