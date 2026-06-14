@@ -167,6 +167,20 @@ Nar kod andras:
 - uppdatera sitemap, redirects, metadata och interna lankar vid behov
 - kor relevant build/test
 - kontrollera git fore och efter
+- vid SEO-deploy: kor lokal metadata-QA fore push om metadata, sitemap eller prerender paverkas:
+
+```cmd
+npm.cmd run metadata:qa
+```
+
+- efter SEO-deploy: kor alltid live metadata-QA mot live sitemap:
+
+```cmd
+npm.cmd run metadata:qa:live
+```
+
+- live metadata-QA ska kontrollera statuskod, title, meta description och canonical i ra HTML for alla URL:er i live sitemap
+- om live metadata-QA faller: rapportera felet, stoppa vidare SEO-arbete och atgarda orsaken innan nasta SEO-jobb
 - vid deploy: verifiera live
 
 8. Rapportera alltid
@@ -189,14 +203,14 @@ Ange:
 - Nasta rekommenderade jobb
 - Varfor det ar sakert/viktigt
 - Prompt att skicka
-- Rekommenderad niva: Lag / Medel / Hog
+- Rekommenderad niva: Medium / High / Extra high
 - Kort motivering
 
 Risknivaer:
 
-- Lag: sitemap, robots, intern lank, redirect, metadata, alt-text, cache header
-- Medel: keyword-implementering, canonical-system, JSON-LD, prerender, nya SEO-sidor, buildflode
-- Hog: full SSR, routingarkitektur, redesign, API/formular/tracking/leadfloden
+- Medium: sitemap, robots, intern lank, redirect, metadata, alt-text, cache header, dokumentation, QA-script
+- High: keyword-implementering, canonical-system, JSON-LD, prerender, nya SEO-sidor, buildflode
+- Extra high: full SSR, routingarkitektur, redesign, API/formular/tracking/leadfloden
 
 Princip:
 
